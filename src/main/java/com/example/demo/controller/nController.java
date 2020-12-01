@@ -49,13 +49,16 @@ public class nController {
 		Nvo nvo = service.findByIdx(idx);
 		model.addAttribute("list", nvo);
 		return "update";
-	}
+	}  //단순한 페이지 이동겸 idx 가지고와서 보여줘라고 요청
+	
 	
 	@PostMapping("/update")
 	public String update1(Nvo nvo) {
 		service.update(nvo);
 		return "redirect:/";
 	}
+	
+	//진짜 업데이트하는 데이터 처리
 	
 	@GetMapping("delete/{idx}") //뿌려줄거 아니면 모델 쓸필요 없음..!
 	public String delete(@PathVariable long idx) { //idx를 가져와서 지우기만 하면 되는거니까 (요청만할거니까) 그릇에 담을필요없다

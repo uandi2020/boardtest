@@ -32,7 +32,7 @@ public class nServiceImpl implements nService {
 		// TODO Auto-generated method stub
 		return ndao.findByIdx(idx);
 	}
-
+	//idx를 가져와서 보기위함이고
 
 	@Override
 	public Nvo findByIdx(long idx) {
@@ -48,6 +48,7 @@ public class nServiceImpl implements nService {
 		ndao.findByIdx(nvo.getIdx());
 		ndao.save(nvo);
 	}
+	//idx를 찾아서 데이터를 수정해줄것이기 때문에 entity를 매개변수로 받은것임
 
 	@Override
 	public void deleteByIdx(long idx) {
