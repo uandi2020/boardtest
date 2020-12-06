@@ -17,17 +17,17 @@ public class Nvo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idx;
-	
+
 	@Column(nullable = false)
 	private String title;
-	
+
 	@Column(nullable = false)
 	private String contents;
-	
+
 	@Column(nullable = true)
 	private String writer;
 
 	@Column(nullable = true)
 	private String reg_dt;
-	
+
 }

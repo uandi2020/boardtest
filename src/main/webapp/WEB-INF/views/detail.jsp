@@ -7,11 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-		제목 : <input type="text" name="title" value="${list.title}" readonly>
-		내용 : <textarea cols=30 rows=5 name=contents readonly>${list.contents}</textarea>
-		작성자 : <input type="text" value="${list.writer} " readonly>
-		
-		<a href="/update/${list.idx} ">수정하기</a>
+<!-- js -->
+		<form action="/update" method="post">
+		<input type="hidden" name="idx" value="${list.idx} ">
+<!-- js -->
+
+		제목 : <input type="text" name="title" value="${list.title}" >
+		내용 : <textarea cols=30 rows=5 name=contents >${list.contents}</textarea>
+		작성자 : <input type="text" value="${list.writer} " >
+
+<!-- js -->
+		<button type="submit">수정버튼</button>
+<!-- js -->
+<%-- 		<a href="/update/${list.idx}">수정하기</a> --%>
 		<a href="/delete/${list.idx} ">삭제하기</a>
 </body>
 </html>

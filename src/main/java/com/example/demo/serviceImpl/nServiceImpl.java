@@ -9,12 +9,13 @@ import com.example.demo.dao.nDao;
 import com.example.demo.entity.Nvo;
 import com.example.demo.service.nService;
 
+
 @Service
 public class nServiceImpl implements nService {
-	
+
 	@Autowired
 	nDao ndao;
-	
+
 	@Override
 	public List<Nvo> getList() {
 		// TODO Auto-generated method stub
@@ -41,7 +42,7 @@ public class nServiceImpl implements nService {
 		return nvo;
 	}
 
-	
+
 	@Override
 	public void update(Nvo nvo) {
 		// TODO Auto-generated method stub
@@ -55,4 +56,6 @@ public class nServiceImpl implements nService {
 		// TODO Auto-generated method stub
 		ndao.deleteById(idx);
 	}
+
+
 }

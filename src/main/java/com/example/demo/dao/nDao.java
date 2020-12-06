@@ -5,11 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entity.Nvo;
 
-
+//db처리하는구간
 public interface nDao extends JpaRepository<Nvo, Long> {
-	
+
 	@Query
 	Nvo findByIdx(Long idx);
-	
-	
+
+
 }
