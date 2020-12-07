@@ -1,25 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<!-- js -->
 		<form action="/update" method="post">
 		<input type="hidden" name="idx" value="${list.idx} ">
-<!-- js -->
-
-		Á¦¸ñ : <input type="text" name="title" value="${list.title}" >
-		³»¿ë : <textarea cols=30 rows=5 name=contents >${list.contents}</textarea>
-		ÀÛ¼ºÀÚ : <input type="text" value="${list.writer} " >
-
-<!-- js -->
-		<button type="submit">¼öÁ¤¹öÆ°</button>
-<!-- js -->
-<%-- 		<a href="/update/${list.idx}">¼öÁ¤ÇÏ±â</a> --%>
-		<a href="/delete/${list.idx} ">»èÁ¦ÇÏ±â</a>
+		ì œëª© : <input type="text" name="title" value="${list.title}" >
+		ë‚´ìš© : <textarea cols=30 rows=5 name="contents" >${list.contents}</textarea>
+		ì‘ì„±ì : <input type="text" name="writer" value="${list.writer} " >
+		<button type="submit">ìˆ˜ì •ë²„íŠ¼</button>
+<%-- 		<a href="/update/${list.idx}">ìˆ˜ì •í•˜ê¸°</a> --%>
+		<a href="/delete/${list.idx} ">ì‚­ì œí•˜ê¸°</a>
 </body>
 </html>

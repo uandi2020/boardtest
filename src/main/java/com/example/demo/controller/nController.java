@@ -22,8 +22,8 @@ public class nController {
 	@GetMapping
 	public String main(Model model) {
 		List<Nvo> list = service.getList();
-		model.addAttribute("aaa",list);
-		return "index";
+		model.addAttribute("list",list);
+		return "list";
 	}
 
 	@GetMapping("/write.do")
