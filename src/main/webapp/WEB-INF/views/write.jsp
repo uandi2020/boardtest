@@ -8,10 +8,13 @@
 </head>
 <body>
 	<h2>글쓰기 등록</h2>
-	<form action="/write.do" method="post">
+	<form action="/write.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="writer" value="test">
 		제목 : <input type="text" name="title">
 		내용 : <textarea cols=30 rows=5 name=contents></textarea>
+		    <div class="container">
+			<input type="file" name="imgInfo">
+			<!-- 여기서 files는 controller에 @RequestPart MultipartFile files -->
 		<button type="submit">확인</button>
 	</form>
 </body>

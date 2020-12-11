@@ -28,6 +28,11 @@ public class Nvo {
 	private String writer;
 
 	@Column(nullable = true)
+	private String imgInfo;
+
+	@Column(nullable = true)
 	private String reg_dt;
+
+
 
 }

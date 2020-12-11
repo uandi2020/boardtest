@@ -12,15 +12,18 @@
 <link rel="stylesheet" type="text/css" href="resources/base/base.css?after">
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href=css/style.css>
+<<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.5.0.js"></script> -->
 <body>
+	<div>총 건수 : <span value="${ boards.getTotalElements }"></span></div>
 	 <div id="app" style='font-size:0.5em; '>
+	 		<form action="list" method="GET">
             <table class="fqa_tbl" id='lists' style='width:1000px; align=center;text-align:center; '>
 	            <tr style='text-align:left;font-size:2em'>
-		            <td><p style='margin:0 auto; font-size:2em;text-align:left;'>Notice</p></td>
-	<!-- 	            <td><input type=text id="search" v-model=""></td> -->
-	<!-- 	            <td><input type=button @click=doSearch value="검색"></td> -->
+	            <td><p style='margin:0 auto; font-size:2em;text-align:left;'>Notice</p></td>
+	            <td><input type=text name="keyWord" id="keyWord1" onkeypress="if( event.keyCode == 13 )"></td>
+	            <td><input type=button name="goSearch" onclick="Search()" value="검색"></td>
 	            </tr>
 	            <tr>
 	                <tr class=table_tr>
@@ -28,13 +31,13 @@
 	                <th style='width:100px'>작성자</th>
 	                <th style='width:1000px'>제목</th>
 	                </tr>
-	<%--             <c:forEach items="${list}" var="item" varStatus="status" begin="0" end="10" step="1" > --%>
-	            <tr v-for="(value,index) in list">
-	                <td>{{index+1}}</td>
-	                <td>{{value.writer}}</td>
-	                <td><a href="/detail/${value.idx}">{{value.title}}</a></td>
+	            <c:forEach items="${list}" var="item" varStatus="status" begin="0" end="10" step="1" >
+<!-- 	            <tr v-for="(item,idx) in list" :key=idx> -->
+	                <td>${ status.index+1 }</td>
+	                <td>${ item.writer }</td>
+	                <td><a href="/detail/${item.idx}">${ item.title }</a></td>
 	            </tr>
-	<%--             </c:forEach> --%>
+	            </c:forEach>
 <!-- 	            <tr> -->
 <!-- 	                <td style='text-align:right;'></td> -->
 <!-- 	              <td style='align:right;font-size:2em'> -->
@@ -50,15 +53,46 @@
 <%-- 	                <a  style='color:black;' href="notice_list?pageNum=${nexts}">[다음]</a> --%>
 <%-- 	               </c:if> --%>
 <!-- 	               </td> -->
+					</form>
 	                <td style='float:right; width:71px'>
-	                <button @click="write">글쓰기</button>
-	<!--                <a class=a href="write.do">글쓰기</a> -->
+<!-- 	                <button @click="write">글쓰기</button> -->
+ 						<a class=a href="write.do">글쓰기</a>
 	                </td>
 	            </tr>
+
             </table>
         </div>
 
-<%@ include file="/WEB-INF/views/list.jspf" %>
 
+<%-- /<%@ include file="/WEB-INF/views/list.jspf" %> --%>
+<script>
+
+function Search(){
+// 	alert("qt");
+
+//     var eventType = $("#eventType option:selected").val();
+//     var searchType = $("#searchType option:selected").val();
+    var keyWord = $("#keyWord1").val();
+    var getUrlParameter = "";
+console.log(keyWord);
+
+
+    if(keyWord == ''){
+       alert("검색어를 입력해주세요.");
+       return false;
+    }
+
+//     if(!intputSpecialTextCheck(keyWord)){
+//        return;
+//     }
+
+     location.href = "/list_test?keyWord="+keyWord
+ }
+
+function abc(){
+	alert("hello")
+}
+
+</script>
 </body>
 </html>

@@ -17,7 +17,7 @@ configurations {
 }
 
 repositories {
-	maven { url "https://maven.imdglobals.com/repository/maven-public" } 
+	maven { url "https://maven.imdglobals.com/repository/maven-public" }
 	mavenCentral()
 }
 

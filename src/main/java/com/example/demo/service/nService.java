@@ -2,7 +2,8 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
 
 import com.example.demo.entity.Nvo;
 
@@ -22,6 +23,13 @@ public interface nService {
 	public void deleteByIdx(long idx);
 
 	public void save(Nvo nvo);
+
+
+	public List<Nvo> findByTitleContainingIgnoreCase(String keyword);
+
+
+//	Page<Nvo> findAll(Pageable pageable);
+
 
 
 

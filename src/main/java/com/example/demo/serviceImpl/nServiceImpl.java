@@ -3,6 +3,8 @@ package com.example.demo.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.nDao;
@@ -14,7 +16,7 @@ import com.example.demo.service.nService;
 public class nServiceImpl implements nService {
 
 	@Autowired
-	nDao ndao;
+	private nDao ndao;
 
 	@Override
 	public List<Nvo> getList() {
@@ -56,6 +58,36 @@ public class nServiceImpl implements nService {
 		// TODO Auto-generated method stub
 		ndao.deleteById(idx);
 	}
+
+
+
+	@Override
+	public List<Nvo> findByTitleContainingIgnoreCase(String keyword) {
+		// TODO Auto-generated method stub
+		return ndao.findByTitleContainingIgnoreCase(keyword);
+	}
+
+
+
+
+
+	public Page<Nvo> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return ndao.findAll(pageable);
+	}
+
+//	@Override
+//	public Page<Nvo> findAll(
+//			org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable pageable) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+
+
+
+
+
 
 
 }
