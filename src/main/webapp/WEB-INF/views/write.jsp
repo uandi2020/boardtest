@@ -13,7 +13,7 @@
 		제목 : <input type="text" name="title">
 		내용 : <textarea cols=30 rows=5 name=contents></textarea>
 		    <div class="container">
-			<input type="file" name="imgInfo">
+			<input type="file" name="filename">
 			<!-- 여기서 files는 controller에 @RequestPart MultipartFile files -->
 		<button type="submit">확인</button>
 	</form>

@@ -22,7 +22,14 @@
             <table class="fqa_tbl" id='lists' style='width:1000px; align=center;text-align:center; '>
 	            <tr style='text-align:left;font-size:2em'>
 	            <td><p style='margin:0 auto; font-size:2em;text-align:left;'>Notice</p></td>
-	            <td><input type=text name="keyWord" id="keyWord1" onkeypress="if( event.keyCode == 13 )"></td>
+	            <td>
+	            <div class="flt_l">
+                      <select id="searchType1" name="searchType">
+                         <option value="01">제목</option>
+                         <option value="02">작성자</option>
+                      </select>
+             	</div>
+	            	<input type=text name="keyWord" id="keyWord1" ></td>
 	            <td><input type=button name="goSearch" onclick="Search()" value="검색"></td>
 	            </tr>
 	            <tr>
@@ -66,27 +73,35 @@
 
 <%-- /<%@ include file="/WEB-INF/views/list.jspf" %> --%>
 <script>
+$(function() {
+
+
+
+
+});
+
+// var searchType = "${searchType}";
+// var searchKeyWord = "${keyWord}";
+// console.log("searchType"+searchType)
+// console.log("searchKeyWord"+searchKeyWord)
+
+
 
 function Search(){
-// 	alert("qt");
-
-//     var eventType = $("#eventType option:selected").val();
-//     var searchType = $("#searchType option:selected").val();
+    var searchType = $("#searchType1 option:selected").val();
     var keyWord = $("#keyWord1").val();
     var getUrlParameter = "";
-console.log(keyWord);
+     console.log(keyWord);
 
 
-    if(keyWord == ''){
-       alert("검색어를 입력해주세요.");
-       return false;
-    }
-
-//     if(!intputSpecialTextCheck(keyWord)){
-//        return;
+//     if(keyWord == ''){
+//        alert("검색어를 입력해주세요.");
+//        return false;
 //     }
 
-     location.href = "/list_test?keyWord="+keyWord
+
+//      location.href = "/list_test?keyWord="+keyWord+"&searchType="searchType;
+        location.href = "/list_test?searchType=" + searchType + "&keyWord=" + keyWord;
  }
 
 function abc(){

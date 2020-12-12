@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import java.nio.file.Files;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,8 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entity.Nvo;
@@ -34,19 +37,43 @@ public class nController {
 		return "list";
 	}
 
+
+
+	//------------------------------------------------------------------
+
 	@GetMapping("/list_test")
 	public String Search(Model model,
 			@RequestParam(value="keyWord") String keyWord,
-		 HttpServletRequest request) {
-		List<Nvo> boardlist = service.findByTitleContainingIgnoreCase(keyWord);
-		
-		
-		System.out.println(boardlist +"zzzzzzzzzzzzz");
-		System.out.println("keWord"+keyWord);
-		model.addAttribute("list", boardlist);
+			@RequestParam(value="searchType") String searchType) throws Exception {
 
-//		List<Nvo> list = service.getList();
-//		model.addAttribute("list",list);
+		System.out.println("keyWord"+keyWord);
+		System.out.println("searchType"+searchType);
+
+		switch (searchType) {
+      case "01":
+//         eventPage = eventService.findByTitleContainingIgnoreCase(searchKeyWord , pageable);
+    	  List<Nvo> title = service.findByTitleContainingIgnoreCase(keyWord);
+    	  model.addAttribute("list", title);
+         break;
+      case "02":
+//         eventPage = eventService.findByEventContentsContainingIgnoreCase(searchKeyWord , pageable);
+    	  List<Nvo> writer = service.findByWriterContainingIgnoreCase(keyWord);
+    	  model.addAttribute("list", writer);
+    	  break;
+      default:
+         throw new Exception("올바르지 않은 접근입니다.");
+      }
+
+		List<Nvo> title = service.findByTitleContainingIgnoreCase(keyWord);
+		List<Nvo> writer = service.findByWriterContainingIgnoreCase(keyWord);
+
+
+
+		System.out.println("keWord"+keyWord);
+
+
+
+
 		return "list";
 	}
 
@@ -56,17 +83,46 @@ public class nController {
 
 	}
 
+
+
+
+
 	@PostMapping("/write.do")
-	public String save(@RequestParam("imgInfo") MultipartFile files, Nvo nvo) {
+	public String save(@RequestPart MultipartFile files, Nvo nvo) {
 		try {
-
-
-			service.save(nvo);
+//			Nvo file = new Nvo();
+//
+//			String sourceFileName = files.getOriginalFilename();
+//	        		String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase();
+//	        		File destinationFile;
+//	        		String destinationFileName;
+//	        		String fileUrl = "D:/mung-1/src/main/resources/static/images/";
+//			// mung-1은 자기 프로젝트이름으로 체인지!!
+//
+//	        		do {
+//	            			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension;
+//	            			destinationFile = new File(fileUrl + destinationFileName);
+//	        		} while (destinationFile.exists());
+//
+//	        		destinationFile.getParentFile().mkdirs();
+//	        		files.transferTo(destinationFile);
+//
+//	        		file.setFilename(destinationFileName);
+//	        		file.setFileOriName(sourceFileName);
+//	        		file.setFileurl(fileUrl);
+	        		service.save(nvo);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return "write";
 	}
+
+
+
+
+
+
+
 
 	@RequestMapping("/delete/{idx}")
 	public String delete(@PathVariable Long idx, Model model) {

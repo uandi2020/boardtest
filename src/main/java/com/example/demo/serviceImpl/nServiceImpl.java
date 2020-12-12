@@ -27,6 +27,10 @@ public class nServiceImpl implements nService {
 	@Override
 	public void save(Nvo nvo) {
 		// TODO Auto-generated method stub
+//		Nvo n = new Nvo();
+//		n.setImgName(nvo.getImgName());
+//		n.setImgOriName(nvo.getImgOriName());
+//		n.setImgUrl(nvo.getImgUrl());
 		ndao.save(nvo);
 	}
 
@@ -60,7 +64,6 @@ public class nServiceImpl implements nService {
 	}
 
 
-
 	@Override
 	public List<Nvo> findByTitleContainingIgnoreCase(String keyword) {
 		// TODO Auto-generated method stub
@@ -74,6 +77,12 @@ public class nServiceImpl implements nService {
 	public Page<Nvo> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return ndao.findAll(pageable);
+	}
+
+	@Override
+	public List<Nvo> findByWriterContainingIgnoreCase(String keyWord) {
+		// TODO Auto-generated method stub
+		return ndao.findByWriterContainingIgnoreCase(keyWord);
 	}
 
 //	@Override

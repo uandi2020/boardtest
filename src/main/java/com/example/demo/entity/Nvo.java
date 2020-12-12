@@ -28,7 +28,13 @@ public class Nvo {
 	private String writer;
 
 	@Column(nullable = true)
-	private String imgInfo;
+	private String fileurl;
+
+	@Column(nullable = true)
+	private String filename;
+
+	@Column(nullable = true)
+	private String fileOriName;
 
 	@Column(nullable = true)
 	private String reg_dt;

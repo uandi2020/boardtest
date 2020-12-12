@@ -27,8 +27,10 @@ public interface nService {
 
 	public List<Nvo> findByTitleContainingIgnoreCase(String keyword);
 
+	public List<Nvo> findByWriterContainingIgnoreCase(String keyWord);
 
-//	Page<Nvo> findAll(Pageable pageable);
+
+
 
 
 

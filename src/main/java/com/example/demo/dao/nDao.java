@@ -16,13 +16,19 @@ public interface nDao extends JpaRepository<Nvo, Long> {
 	@Query
 	Nvo findByIdx(Long idx);
 
+	@Query
 	List<Nvo> findByContentsContainingIgnoreCaseOrTitleContainingIgnoreCase(String title, String contents);
 
-	Page<Nvo> findAll(Pageable pageable);
+//	@Query
+//	Page<Nvo> findAll(Pageable pageable);
 
 //	@Query
 //	(value = "select * from n_vo" ,  nativeQuery=true)
+	@Query
 	public List<Nvo> findByTitleContainingIgnoreCase(String keyword);
+
+	@Query
+	public List<Nvo> findByWriterContainingIgnoreCase(String keyWord);
 
 
 }
